@@ -1,4 +1,10 @@
 ---
+- name: Create Docker network
+  community.docker.docker_network:
+    name: point-network
+    driver: bridge
+    state: present
+
 - name: START COMPOSE FILE
   community.docker.docker_compose_v2:
     build: always
@@ -7,9 +13,11 @@
     project_src: "{{ backend_path }}"
     state: present
     pull: missing
-    remove_orphans: yes
+    # remove_orphans: yes
     remove_images: local
-
+  environment:    
+    BUILD_VERSION: "{{ build_version }}"
+    
 - name: MESSAGE
   ansible.builtin.debug:
     msg:
