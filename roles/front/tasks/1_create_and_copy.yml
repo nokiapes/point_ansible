@@ -14,10 +14,12 @@
     dest: "{{ item.dest }}"
     mode: "{{ item.mode | default('0644') }}"
     force: "{{ item.force | default('true') }}"
+    owner: "{{ item.owner | default('jenkins') }}"
+    group: "{{ item.group | default('jenkins') }}"
   with_items:
-    - { src: 'files/Dockerfile', dest: "{{ front_path }}" }
-    - { src: 'files/docker-compose.yml', dest: "{{ front_path }}" }
-    - { src: 'files/nginx', dest: "{{ front_path }}" }
+    - { src: 'files/Dockerfile', dest: "{{ backend_path }}" }
+    - { src: 'files/docker-compose.yml', dest: "{{ backend_path }}" }
+    - { src: 'files/nginx', dest: "{{ backend_path }}" }
     - { src: 'files/get_ssl_cert_cron.sh', dest: '/opt/point/cert', mode: '0744' }
 
 - name: CHECK FOR CERT FILE
@@ -40,3 +42,4 @@
     month: "*"
     job: "/opt/point/cert/get_ssl_cert_cron.sh"
     user: jenkins
+
