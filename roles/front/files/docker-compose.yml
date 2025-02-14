@@ -4,6 +4,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    image: point-backend:${BUILD_VERSION}
     ports:
       - "80:80"
       - "443:443"
@@ -16,6 +17,7 @@ services:
     #     condition: service_healthy
 
 networks:
-  point-network:
+  network:
     external: true
-    name: point_network
+    name: point-network
+
