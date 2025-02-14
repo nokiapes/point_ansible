@@ -1,0 +1,18 @@
+---
+- name: START COMPOSE FILE
+  community.docker.docker_compose_v2:
+    build: always
+    check_files_existing: true
+    project_name: point
+    project_src: "{{ backend_path }}"
+    state: present
+    pull: missing
+    remove_orphans: yes
+    remove_images: local
+  environment:    
+    AWS_ACCESS_KEY: "{{ aws_access_key }}"
+    AWS_SECRET_KEY: "{{ aws_secret_key }}"
+    AWS_REGION: "{{ aws_region }}"
+    AWS_BUCKET: "{{ aws_bucket }}"
+    POSTGRES_CONN: "{{ postgres_conn }}"
+

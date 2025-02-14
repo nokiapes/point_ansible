@@ -1,0 +1,7 @@
+---
+- name: START_BACKEND
+  hosts: point
+  become: true
+  become_method: sudo
+  roles:
+    - back

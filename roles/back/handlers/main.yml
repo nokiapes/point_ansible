@@ -1,0 +1,11 @@
+---
+- name: RESTART_DOCKER
+  ansible.builtin.systemd_service:
+    name: docker
+    state: restarted
+
+- name: RESTART_APP
+  community.docker.docker_compose_v2:
+    project_src: /opt/point
+    state: present
+    restarted: yes

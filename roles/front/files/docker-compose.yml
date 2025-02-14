@@ -1,0 +1,21 @@
+# name: point
+services:
+  front:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - /etc/letsencrypt:/etc/letsencrypt:ro
+    networks:
+      - point-network
+    depends_on:
+      back:
+        condition: service_healthy
+
+networks:
+  point-network:
+    external: true
+    name: point-network

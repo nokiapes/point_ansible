@@ -1,0 +1,19 @@
+---
+- name: START COMPOSE FILE
+  community.docker.docker_compose_v2:
+    build: always
+    check_files_existing: true
+    project_name: point
+    project_src: "{{ backend_path }}"
+    state: present
+    pull: missing
+    remove_orphans: yes
+    remove_images: local
+
+- name: MESSAGE
+  ansible.builtin.debug:
+    msg:
+      - "==================================="
+      - "       Project 'Point' started      "
+      - "  URL: https://point.in.ua         "
+      - "==================================="

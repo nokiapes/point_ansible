@@ -1,0 +1,26 @@
+# name: point
+services:
+  back:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - AWS_ACCESS_KEY
+      - AWS_SECRET_KEY
+      - AWS_REGION
+      - AWS_BUCKET
+      - POSTGRES_CONN
+    ports:
+      - "5000:80"
+    networks:
+      - network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:80/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+networks:
+  network:
+    driver: bridge
+
