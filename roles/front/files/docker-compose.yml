@@ -11,9 +11,9 @@ services:
       - /etc/letsencrypt:/etc/letsencrypt:ro
     networks:
       - point-network
-    depends_on:
-      back:
-        condition: service_healthy
+    # depends_on:
+    #   back:
+    #     condition: service_healthy
 
 networks:
   point-network:
