@@ -15,9 +15,9 @@
     mode: "{{ item.mode | default('0644') }}"
     force: "{{ item.force | default('true') }}"
   with_items:
-    - { src: 'files/Dockerfile', dest: "{{ backend_path }}" }
-    - { src: 'files/docker-compose.yml', dest: "{{ backend_path }}" }
-    - { src: 'files/nginx', dest: "{{ backend_path }}" }
+    - { src: 'files/Dockerfile', dest: "{{ front_path }}" }
+    - { src: 'files/docker-compose.yml', dest: "{{ front_path }}" }
+    - { src: 'files/nginx', dest: "{{ front_path }}" }
     - { src: 'files/get_ssl_cert_cron.sh', dest: '/opt/point/cert', mode: '0744' }
 
 - name: CHECK FOR CERT FILE
