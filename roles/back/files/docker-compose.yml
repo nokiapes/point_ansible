@@ -14,10 +14,10 @@ services:
     ports:
       - "5000:80"
     networks:
-      - network
+      - point-network
 
 networks:
-  network:
+  point-network:
     external: true
     name: point-network
 
