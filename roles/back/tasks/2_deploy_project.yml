@@ -7,7 +7,7 @@
     project_src: "{{ backend_path }}"
     state: present
     pull: missing
-    remove_orphans: yes
+    # remove_orphans: yes
     remove_images: local
   environment:    
     AWS_ACCESS_KEY: "{{ aws_access_key }}"
@@ -15,4 +15,5 @@
     AWS_REGION: "{{ aws_region }}"
     AWS_BUCKET: "{{ aws_bucket }}"
     POSTGRES_CONN: "{{ postgres_conn }}"
+    BUILD_VERSION: "{{ build_version }}"
 
