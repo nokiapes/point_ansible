@@ -18,4 +18,4 @@ services:
 networks:
   point-network:
     external: true
-    name: point-network
+    name: point_network
