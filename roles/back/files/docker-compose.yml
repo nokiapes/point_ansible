@@ -4,7 +4,6 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: point-backend:${BUILD_VERSION}
     environment:
       - AWS_ACCESS_KEY
       - AWS_SECRET_KEY
