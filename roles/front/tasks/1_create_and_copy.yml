@@ -8,6 +8,14 @@
     recurse: yes
   # become: true
 
+- name: CREATE DIRECTORY
+  ansible.builtin.file:
+    path: "{{ backend_path }}"
+    state: directory
+    mode: '0755'
+    owner: jenkins
+    group: jenkins
+
 - name: COPY FILES
   ansible.builtin.copy:
     src: "{{ item.src }}"
