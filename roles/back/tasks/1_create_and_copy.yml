@@ -1,4 +1,12 @@
 ---
+- name: CREATE DIRECTORY
+  ansible.builtin.file:
+    path: "{{ backend_path }}"
+    state: directory
+    mode: '0755'
+    owner: jenkins
+    group: jenkins
+
 - name: COPY FILES
   ansible.builtin.copy:
     src: "{{ item.src }}"
@@ -21,4 +29,5 @@
     - { src: 'azuresettings.json.j2', dest: "{{ backend_path }}/azuresettings.json" }
     - { src: 'awss3settings.json.j2', dest: "{{ backend_path }}/awss3settings.json" }
     - { src: 'postgressettings.json.j2', dest: "{{ backend_path }}/postgressettings.json" }
+
 
