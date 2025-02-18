@@ -10,7 +10,7 @@
 
 - name: CREATE DIRECTORY
   ansible.builtin.file:
-    path: "{{ backend_path }}"
+    path: "{{ front_path }}"
     state: directory
     mode: '0755'
     owner: jenkins
