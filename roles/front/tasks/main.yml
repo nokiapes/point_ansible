@@ -1,0 +1,7 @@
+---
+- name: CREATE STRUCTURE PROJECT
+  ansible.builtin.import_tasks: 1_create_and_copy.yml
+
+- name: DEPLOY PROJECT
+  ansible.builtin.import_tasks: 2_deploy_project.yml
+
