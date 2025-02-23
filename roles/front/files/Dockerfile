@@ -9,11 +9,12 @@ FROM nginx:alpine AS start
 
 #
 RUN mkdir -p /var/www/nginx/point && \
+    mkdir -p /etc/letsencrypt && \
     chown -R nginx:nginx /var/www/nginx && \
     chown -R nginx:nginx /var/cache/nginx && \
     chown -R nginx:nginx /var/log/nginx && \
     touch /run/nginx.pid && \
-    chown nginx:nginx /run/nginx.pid\
+    chown nginx:nginx /run/nginx.pid &&\
     chown nginx:nginx /etc/letsencrypt
 #
 
