@@ -1,0 +1,53 @@
+---
+- name: CREATE DIRECTORY FOR CERT
+  ansible.builtin.file:
+    path: /opt/point/cert
+    follow: true
+    mode: "0755"
+    state: directory
+    recurse: yes
+  # become: true
+
+- name: CREATE DIRECTORY
+  ansible.builtin.file:
+    path: "{{ front_path }}"
+    state: directory
+    mode: '0755'
+    owner: jenkins
+    group: jenkins
+
+- name: COPY FILES
+  ansible.builtin.copy:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+    mode: "{{ item.mode | default('0644') }}"
+    force: "{{ item.force | default('true') }}"
+    owner: "{{ item.owner | default('jenkins') }}"
+    group: "{{ item.group | default('jenkins') }}"
+  with_items:
+    - { src: 'files/Dockerfile', dest: "{{ front_path }}" }
+    - { src: 'files/docker-compose.yml', dest: "{{ front_path }}" }
+    - { src: 'files/nginx', dest: "{{ front_path }}" }
+    - { src: 'files/get_ssl_cert_cron.sh', dest: '/opt/point/cert', mode: '0744' }
+
+- name: CHECK FOR CERT FILE
+  stat:
+    path: "/etc/letsencrypt/live/point.in.ua/fullchain.pem"
+  register: cert_file
+
+- name: GET CERTS
+  ansible.builtin.script:
+    cmd: "{{ role_path }}/files/get_ssl_cert.sh"
+    executable: /bin/bash
+  when: not cert_file.stat.exists
+
+- name: ADD SSL CERTIFICATE RENEW TO CRONTAB
+  cron:
+    name: "SSL certificate renew"
+    minute: "0"
+    hour: "0"
+    day: "1"
+    month: "*"
+    job: "/opt/point/cert/get_ssl_cert_cron.sh"
+    user: jenkins
+
