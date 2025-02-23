@@ -13,7 +13,8 @@ RUN mkdir -p /var/www/nginx/point && \
     chown -R nginx:nginx /var/cache/nginx && \
     chown -R nginx:nginx /var/log/nginx && \
     touch /run/nginx.pid && \
-    chown nginx:nginx /run/nginx.pid
+    chown nginx:nginx /run/nginx.pid\
+    chown nginx:nginx /etc/letsencrypt
 #
 
 WORKDIR /var/www/nginx/point
@@ -26,6 +27,4 @@ COPY nginx/nginx.conf /etc/nginx/conf.d/default.conf
 USER nginx
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
-
-
 
