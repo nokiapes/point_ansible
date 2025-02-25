@@ -11,8 +11,8 @@ services:
       - AWS_REGION
       - AWS_BUCKET
       - POSTGRES_CONN
-    ports:
-      - "5000:80"
+    # ports:
+      # - "5000:80"
     networks:
       - point-network
 
