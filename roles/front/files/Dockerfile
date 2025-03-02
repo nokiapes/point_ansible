@@ -11,7 +11,7 @@ RUN mkdir -p /var/www/nginx/point && \
     chown -R nginx:nginx /var/cache/nginx && \
     chown -R nginx:nginx /var/log/nginx && \
     touch /run/nginx.pid && \
-    chown nginx:nginx /run/nginx.pid &&
+    chown nginx:nginx /run/nginx.pid
 
 WORKDIR /var/www/nginx/point
 COPY --from=build /app/dist .
