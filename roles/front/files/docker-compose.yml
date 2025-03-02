@@ -16,7 +16,7 @@ services:
       options:
         max-size: "10m"
         max-file: "3"
-    read_only: true  # only reed files to container
+    # read_only: true  # only reed files to container
     tmpfs:  # directory for write
       - /var/cache/nginx:rw,nosuid,size=100M
       - /var/log/nginx:rw,nosuid,size=100M
