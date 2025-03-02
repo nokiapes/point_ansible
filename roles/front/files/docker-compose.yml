@@ -6,7 +6,7 @@ services:
     image: point-frontend:${BUILD_VERSION}
     restart: unless-stopped
     ports:
-      - "127.0.0.1:81" 
+      - "127.0.0.1:81:80" 
     networks:
       - point-network
     security_opt:
