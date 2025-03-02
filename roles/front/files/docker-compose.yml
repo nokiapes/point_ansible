@@ -17,11 +17,11 @@ services:
         max-size: "10m"
         max-file: "3"
     # read_only: true  # only reed files to container
-    tmpfs:  # directory for write
-      - /var/cache/nginx:rw,exec,nosuid,size=100M
-      - /var/log/nginx:rw,exec,nosuid,size=100M
-      - /run:rw,exec,size=50M
-      - /tmp:rw,exec,size=50M
+    # tmpfs:  # directory for write
+    #   - /var/cache/nginx:rw,exec,nosuid,size=100M
+    #   - /var/log/nginx:rw,exec,nosuid,size=100M
+    #   - /run:rw,exec,size=50M
+    #   - /tmp:rw,exec,size=50M
 networks:
   point-network:
     external: true
