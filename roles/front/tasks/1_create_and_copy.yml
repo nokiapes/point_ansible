@@ -1,13 +1,4 @@
 ---
-- name: CREATE DIRECTORY FOR CERT
-  ansible.builtin.file:
-    path: /opt/point/cert
-    follow: true
-    mode: "0755"
-    state: directory
-    recurse: yes
-  # become: true
-
 - name: CREATE DIRECTORY
   ansible.builtin.file:
     path: "{{ front_path }}"
@@ -27,27 +18,10 @@
   with_items:
     - { src: 'files/Dockerfile', dest: "{{ front_path }}" }
     - { src: 'files/docker-compose.yml', dest: "{{ front_path }}" }
-    - { src: 'files/nginx', dest: "{{ front_path }}" }
-    - { src: 'files/get_ssl_cert_cron.sh', dest: '/opt/point/cert', mode: '0744' }
+    # - { src: 'files/nginx', dest: "{{ front_path }}" }
 
-- name: CHECK FOR CERT FILE
-  stat:
-    path: "/etc/letsencrypt/live/point.in.ua/fullchain.pem"
-  register: cert_file
-
-- name: GET CERTS
-  ansible.builtin.script:
-    cmd: "{{ role_path }}/files/get_ssl_cert.sh"
-    executable: /bin/bash
-  when: not cert_file.stat.exists
-
-- name: ADD SSL CERTIFICATE RENEW TO CRONTAB
-  cron:
-    name: "SSL certificate renew"
-    minute: "0"
-    hour: "0"
-    day: "1"
-    month: "*"
-    job: "/opt/point/cert/get_ssl_cert_cron.sh"
-    user: jenkins
-
+- name: NGINX CONFIG
+  ansible.builtin.template:
+    src: nginx.conf.j2
+    dest: "{{ front_path }}/nginx.conf"
+    mode: "0644"

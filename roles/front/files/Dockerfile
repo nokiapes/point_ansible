@@ -17,11 +17,10 @@ RUN mkdir -p /var/www/nginx/point && \
 
 WORKDIR /var/www/nginx/point
 COPY --from=build /app/dist .
-COPY nginx/nginx.conf /etc/nginx/conf.d/default.conf 
+COPY nginx.conf /etc/nginx/conf.d/default.conf 
 # ^ host/cont
+# COPY nginx/nginx.conf /etc/nginx/conf.d/default.conf 
 
 USER nginx
 EXPOSE 81
 CMD ["nginx", "-g", "daemon off;"]
-
-COPY nginx/nginx.conf /etc/nginx/conf.d/default.conf
