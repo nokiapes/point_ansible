@@ -12,6 +12,13 @@ services:
       - /etc/letsencrypt:/etc/letsencrypt:ro
     networks:
       - point-network
+    security_opt:
+      - no-new-privileges:true  # deny for new priviligiftion
+    # read_only: true  # only reed files to container
+    # tmpfs:  # directory for write
+    #   - /var/cache/nginx
+    #   - /var/log/nginx
+    #   - /run
 
 networks:
   point-network:
