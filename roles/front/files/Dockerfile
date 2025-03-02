@@ -6,8 +6,6 @@ COPY . ./
 RUN npm run build
 
 FROM nginx:alpine AS start
-
-#
 RUN mkdir -p /var/www/nginx/point && \
     mkdir -p /etc/letsencrypt && \
     chown -R nginx:nginx /var/www/nginx && \
@@ -16,16 +14,14 @@ RUN mkdir -p /var/www/nginx/point && \
     touch /run/nginx.pid && \
     chown nginx:nginx /run/nginx.pid &&\
     chown nginx:nginx /etc/letsencrypt
-#
 
 WORKDIR /var/www/nginx/point
 COPY --from=build /app/dist .
-COPY nginx/nginx.conf /etc/nginx/conf.d/default.conf
-
-# COPY --from=build /app/dist /var/www/nginx/point
-# COPY nginx/nginx.conf /etc/nginx/conf.d/default.conf
+COPY nginx/nginx.conf /etc/nginx/conf.d/default.conf 
+# ^ host/cont
 
 USER nginx
-EXPOSE 80
+EXPOSE 81
 CMD ["nginx", "-g", "daemon off;"]
 
+COPY nginx/nginx.conf /etc/nginx/conf.d/default.conf
