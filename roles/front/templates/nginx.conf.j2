@@ -4,17 +4,12 @@ server{
     root /var/www/nginx/point;
     index index.html;
 
-    location ~ ^/(wp-admin|wp-login|wordpress|wp-content|wp-includes|
-    admin|administrator|phpmyadmin|pma|myadmin|mysql|database|cms|
-    cpanel|webmail|mail|smtp|webdav|config|install|setup|backup|
-    old|bak|temp|tmp|cgi-bin|manager|console|api/swagger|api/docs|
-    actuator|solr|jenkins) {
+    location ~ ^/(wp-admin|wp-login|wordpress|wp-content|wp-includes|admin|administrator|phpmyadmin|pma|myadmin|mysql|database|cms|cpanel|webmail|mail|smtp|webdav|config|install|setup|backup|old|bak|temp|tmp|cgi-bin|manager|console|api/swagger|api/docs|actuator|solr|jenkins) {
         # access_log /var/log/nginx/blocked.log;
         return 404;
     }
 
-    location ~* \.(git|svn|hg|ht|env|sql|bak|old|orig|ini|cfg|json|
-    conf|config|psd|log)$ {
+    location ~* \.(git|svn|hg|ht|env|sql|bak|old|orig|ini|cfg|json|conf|config|psd|log)$ {
         deny all;
         return 404;
     }
@@ -23,7 +18,7 @@ server{
         try_files $uri $uri/ /index.html;
     }
     real_ip_header X-Forwarded-For;
-    set_real_ip_from 172.18.0.0/16;  # Сеть вашего прокси
+    set_real_ip_from 172.18.0.0/16;
     real_ip_recursive on;
 
     add_header X-Content-Type-Options "nosniff" always;
@@ -40,6 +35,4 @@ server{
 
     # access_log /dev/stdout;
     # error_log /dev/stderr;
-
 }
-
