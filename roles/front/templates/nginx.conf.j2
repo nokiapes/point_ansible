@@ -15,7 +15,7 @@ server{
     add_header X-Content-Type-Options "nosniff" always;
     add_header X-Frame-Options "SAMEORIGIN" always;
 
-    location ~ ^/(wp-admin|wp-login|wordpress|wp-content|wp-includes|admin|administrator|phpmyadmin|pma|myadmin|mysql|database|cms|cpanel|webmail|mail|smtp|webdav|config|install|setup|backup|old|bak|temp|tmp|cgi-bin|manager|console|api/swagger|api/docs|actuator|solr|jenkins) {
+    location ~ ^/(wp-admin|wp-login|wordpress|wp-content|wp-includes|administrator|phpmyadmin|pma|myadmin|mysql|database|cms|cpanel|webmail|mail|smtp|webdav|config|install|setup|backup|old|bak|temp|tmp|cgi-bin|manager|console|api/swagger|api/docs|actuator|solr|jenkins) {
         # access_log /var/log/nginx/blocked.log;
         return 404;
     }
