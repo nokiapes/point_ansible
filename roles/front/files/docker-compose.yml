@@ -6,22 +6,23 @@ services:
     image: point-frontend:${BUILD_VERSION}
     restart: unless-stopped
     ports:
-      - "80:80"
-      - "443:443"
-    volumes:
-      - /etc/letsencrypt:/etc/letsencrypt:ro
+      - "127.0.0.1:81:80" 
     networks:
       - point-network
     security_opt:
       - no-new-privileges:true  # deny for new priviligiftion
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
     # read_only: true  # only reed files to container
     # tmpfs:  # directory for write
-    #   - /var/cache/nginx
-    #   - /var/log/nginx
-    #   - /run
-
+    #   - /var/cache/nginx:rw,exec,nosuid,size=100M
+    #   - /var/log/nginx:rw,exec,nosuid,size=100M
+    #   - /run:rw,exec,size=50M
+    #   - /tmp:rw,exec,size=50M
 networks:
   point-network:
     external: true
     name: point-network
-

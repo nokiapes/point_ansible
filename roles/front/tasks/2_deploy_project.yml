@@ -18,10 +18,3 @@
   environment:    
     BUILD_VERSION: "{{ build_version }}"
     
-- name: MESSAGE
-  ansible.builtin.debug:
-    msg:
-      - "==================================="
-      - "       Project 'Point' started      "
-      - "  URL: https://point.in.ua         "
-      - "==================================="

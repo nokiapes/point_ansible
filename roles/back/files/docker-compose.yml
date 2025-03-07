@@ -11,12 +11,23 @@ services:
       - AWS_REGION
       - AWS_BUCKET
       - POSTGRES_CONN
-    # ports:
-      # - "5000:80"
+    ports:
+      - "127.0.0.1:5000:80"
     networks:
       - point-network
+    security_opt:
+      - no-new-privileges:true  # deny for new priviligiftion
+    # /var/lib/docker/containers/<container-id>/<container-id>-json.log
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+    read_only: true
+    tmpfs:
+      - /tmp:rw,exec,nosuid,size=50M
 
 networks:
   point-network:
     external: true
-    name: point-network
+    name: point-network 
