@@ -5,6 +5,11 @@ COPY *.sln .
 COPY *.csproj ./
 RUN dotnet restore shnurok.sln
 
+###### new
+RUN dotnet add package AWSSDK.RDS
+RUN dotnet add package AWSSDK.Core
+######
+
 COPY . ./
 RUN dotnet publish shnurok.sln -c release -o /app/build /p:AssemblyName=point
 
