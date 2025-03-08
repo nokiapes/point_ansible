@@ -25,3 +25,6 @@
     AWS_RDS_Database_Region: "{{ AWS_RDS_Database_Region }}"
     AWS_S3_Bucket_Name: "{{ AWS_S3_Bucket_Name }}"
     AWS_S3_Bucket_Region: "{{ AWS_S3_Bucket_Region }}"
+    BUILD_VERSION: "{{ build_version }}"
+
+
