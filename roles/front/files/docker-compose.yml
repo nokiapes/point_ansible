@@ -11,7 +11,6 @@ services:
       - point-network
     security_opt:
       - no-new-privileges:true  # deny for new priviligiftion
-      - seccomp=default # system wizov off 
     logging:
       driver: "json-file"
       options:
