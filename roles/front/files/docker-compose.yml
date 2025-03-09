@@ -17,7 +17,7 @@ services:
         max-size: "10m"
         max-file: "3"
     # new
-    # read_only: true  # only reed files to container
+    read_only: true  # only reed files to container
     tmpfs:  # directory for write
       - /var/cache/nginx:rw,exec,nosuid,size=100M
       - /var/cache/nginx/client_temp:rw,exec,nosuid,size=20M
