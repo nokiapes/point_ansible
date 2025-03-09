@@ -11,13 +11,17 @@ RUN mkdir -p /var/www/nginx/point && \
     chown -R nginx:nginx /var/cache/nginx && \
     chown -R nginx:nginx /var/log/nginx && \
     touch /run/nginx.pid && \
-    chown nginx:nginx /run/nginx.pid
+    chown nginx:nginx /run/nginx.pid && \
+    # Добавляем: удаляем ненужные файлы
+    rm -rf /usr/share/nginx/html/* && \
+    # Добавляем: проверку конфигурации
+    chmod -R 555 /var/www/nginx/point
 
 WORKDIR /var/www/nginx/point
 COPY --from=build /app/dist .
 COPY nginx.conf /etc/nginx/conf.d/default.conf 
 # ^ host/cont
-# COPY nginx/nginx.conf /etc/nginx/conf.d/default.conf 
+
 
 USER nginx
 EXPOSE 80

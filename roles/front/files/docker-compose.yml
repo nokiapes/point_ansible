@@ -11,17 +11,20 @@ services:
       - point-network
     security_opt:
       - no-new-privileges:true  # deny for new priviligiftion
+      - seccomp=default # system wizov off 
     logging:
       driver: "json-file"
       options:
         max-size: "10m"
         max-file: "3"
+    # new
     # read_only: true  # only reed files to container
-    # tmpfs:  # directory for write
-    #   - /var/cache/nginx:rw,exec,nosuid,size=100M
-    #   - /var/log/nginx:rw,exec,nosuid,size=100M
-    #   - /run:rw,exec,size=50M
-    #   - /tmp:rw,exec,size=50M
+    tmpfs:  # directory for write
+      - /var/cache/nginx:rw,exec,nosuid,size=100M
+      - /var/log/nginx:rw,exec,nosuid,size=100M
+      - /run:rw,exec,size=50M
+      - /tmp:rw,exec,size=50M
+    # new
 networks:
   point-network:
     external: true

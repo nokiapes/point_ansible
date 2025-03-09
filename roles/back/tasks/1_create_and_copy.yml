@@ -26,7 +26,6 @@
     mode: '0644'
     validate: jq . %s
   loop:
-    - { src: 'azuresettings.json.j2', dest: "{{ backend_path }}/azuresettings.json" }
     - { src: 'awss3settings.json.j2', dest: "{{ backend_path }}/awss3settings.json" }
     - { src: 'postgressettings.json.j2', dest: "{{ backend_path }}/postgressettings.json" }
 

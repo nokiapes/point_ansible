@@ -19,23 +19,18 @@ FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS start
 WORKDIR /app
 
 # add validate certs db and s3
-RUN apt-get update \
-    # new
-    && apt-get upgrade -y \
-    # new
-    && apt-get install -y --no-install-recommends \
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends && \
         ca-certificates \
         tzdata \
-        # new
         libgnutls30 \
         libgssapi-krb5-2 \
         libk5crypto3 \
         libkrb5-3 \
         libkrb5support0 \
         libtasn1-6 \
-    && apt-get clean \
-    # new      
-    && rm -rf /var/lib/apt/lists/*
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
 
 # add user and privileges
 RUN adduser --disabled-password --gecos "" --home /app appuser \
