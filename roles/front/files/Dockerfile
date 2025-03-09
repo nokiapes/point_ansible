@@ -9,10 +9,10 @@ FROM nginx:alpine AS start
 RUN mkdir -p /var/www/nginx/point && \
     mkdir -p /var/cache/nginx/client_temp && \
     mkdir -p /var/cache/nginx/proxy_temp && \
-    # mkdir -p /var/cache/nginx/fastcgi_temp && \
-    # mkdir -p /var/cache/nginx/uwsgi_temp && \
+    mkdir -p /var/cache/nginx/fastcgi_temp && \
+    mkdir -p /var/cache/nginx/uwsgi_temp && \
     # mkdir -p /var/cache/nginx/scgi_temp && \
-    # mkdir -p /var/log/nginx && \
+    mkdir -p /var/log/nginx && \
     touch /var/log/nginx/error.log && \
     touch /var/log/nginx/access.log && \
 
