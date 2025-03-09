@@ -21,7 +21,7 @@ WORKDIR /app
 # add validate certs db and s3
 RUN apt-get update \
     # new
-    apt-get upgrade -y && \
+    && apt-get upgrade -y \
     # new
     && apt-get install -y --no-install-recommends \
         ca-certificates \
@@ -32,8 +32,8 @@ RUN apt-get update \
         libk5crypto3 \
         libkrb5-3 \
         libkrb5support0 \
-        libtasn1-6 && \
-    apt-get clean && \
+        libtasn1-6 \
+    && apt-get clean \
     # new      
     && rm -rf /var/lib/apt/lists/*
 
