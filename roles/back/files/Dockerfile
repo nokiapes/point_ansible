@@ -5,10 +5,12 @@ COPY *.sln .
 COPY *.csproj ./
 RUN dotnet restore shnurok.sln
 
-###### new
 RUN dotnet add package AWSSDK.RDS
 RUN dotnet add package AWSSDK.Core
-######
+###### new
+RUN dotnet add package MessagePack --version 2.5.187
+RUN dotnet add package System.Drawing.Common --version 4.7.2
+###### new
 
 COPY . ./
 RUN dotnet publish shnurok.sln -c release -o /app/build /p:AssemblyName=point
@@ -18,9 +20,21 @@ WORKDIR /app
 
 # add validate certs db and s3
 RUN apt-get update \
+    # new
+    apt-get upgrade -y && \
+    # new
     && apt-get install -y --no-install-recommends \
         ca-certificates \
         tzdata \
+        # new
+        libgnutls30 \
+        libgssapi-krb5-2 \
+        libk5crypto3 \
+        libkrb5-3 \
+        libkrb5support0 \
+        libtasn1-6 && \
+    apt-get clean && \
+    # new      
     && rm -rf /var/lib/apt/lists/*
 
 # add user and privileges
