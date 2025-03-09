@@ -13,8 +13,8 @@ RUN mkdir -p /var/www/nginx/point && \
     # mkdir -p /var/cache/nginx/uwsgi_temp && \
     # mkdir -p /var/cache/nginx/scgi_temp && \
     # mkdir -p /var/log/nginx && \
-    # touch /var/log/nginx/error.log && \
-    # touch /var/log/nginx/access.log && \
+    touch /var/log/nginx/error.log && \
+    touch /var/log/nginx/access.log && \
 
     chown -R nginx:nginx /var/www/nginx && \
     chown -R nginx:nginx /var/cache/nginx && \
