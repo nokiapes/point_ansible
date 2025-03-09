@@ -25,7 +25,7 @@ services:
       - /var/cache/nginx/fastcgi_temp:rw,exec,nosuid,size=50M
       - /var/cache/nginx/uwsgi_temp:rw,exec,nosuid,size=50M
       - /var/cache/nginx/scgi_temp:rw,exec,nosuid,size=50M
-      - /var/log/nginx:rw,exec,nosuid,size=100M
+      - /var/log/nginx:rw,exec,nosuid,mode=0777,size=100M
       - /run:rw,exec,nosuid,size=50M
       - /tmp:rw,exec,nosuid,size=50M
     # new
