@@ -16,10 +16,15 @@
     # remove_orphans: yes
     remove_images: local
   environment:    
-    AWS_ACCESS_KEY: "{{ aws_access_key }}"
-    AWS_SECRET_KEY: "{{ aws_secret_key }}"
-    AWS_REGION: "{{ aws_region }}"
-    AWS_BUCKET: "{{ aws_bucket }}"
-    POSTGRES_CONN: "{{ postgres_conn }}"
+    AWS_ACCESS_KEY_ID: "{{ AWS_ACCESS_KEY_ID }}"
+    AWS_SECRET_ACCESS_KEY: "{{ AWS_SECRET_ACCESS_KEY }}"
+    AWS_RDS_Database_Endpoint: "{{ AWS_RDS_Database_Endpoint }}"
+    AWS_RDS_Database_Name: "{{ AWS_RDS_Database_Name }}"
+    AWS_RDS_Database_Port: "{{ AWS_RDS_Database_Port }}"
+    AWS_RDS_Database_Username: "{{ AWS_RDS_Database_Username }}"
+    AWS_RDS_Database_Region: "{{ AWS_RDS_Database_Region }}"
+    AWS_S3_Bucket_Name: "{{ AWS_S3_Bucket_Name }}"
+    AWS_S3_Bucket_Region: "{{ AWS_S3_Bucket_Region }}"
     BUILD_VERSION: "{{ build_version }}"
+
 
