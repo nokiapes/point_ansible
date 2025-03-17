@@ -6,18 +6,29 @@ COPY . ./
 RUN npm run build
 
 FROM nginx:alpine AS start
-RUN mkdir -p /var/www/nginx/point && \
+RUN apk update && \
+    apk upgrade libxml2 && \
+    rm -rf /var/cache/apk/* &&\
+
+    mkdir -p /var/www/nginx/point && \
+    # touch /var/log/nginx/error.log && \
+    # touch /var/log/nginx/access.log && \
+
     chown -R nginx:nginx /var/www/nginx && \
-    chown -R nginx:nginx /var/cache/nginx && \
-    chown -R nginx:nginx /var/log/nginx && \
-    touch /run/nginx.pid && \
-    chown nginx:nginx /run/nginx.pid
+    # chown -R nginx:nginx /var/cache/nginx && \
+    # chown -R nginx:nginx /var/log/nginx && \
+    # touch /run/nginx.pid && \
+    # chown nginx:nginx /run/nginx.pid && \
+    # удаляем ненужные файлы
+    rm -rf /usr/share/nginx/html/* && \
+    # проверка конфигурации
+    chmod -R 555 /var/www/nginx/point
 
 WORKDIR /var/www/nginx/point
 COPY --from=build /app/dist .
 COPY nginx.conf /etc/nginx/conf.d/default.conf 
 # ^ host/cont
-# COPY nginx/nginx.conf /etc/nginx/conf.d/default.conf 
+
 
 USER nginx
 EXPOSE 80
