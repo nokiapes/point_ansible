@@ -10,7 +10,7 @@ RUN apk update && \
     apk upgrade libxml2 && \
     rm -rf /var/cache/apk/* &&\
     mkdir -p /var/www/nginx/point && \
-    chown -R nginx:nginx /var/www/nginx && \
+    # chown -R nginx:nginx /var/www/nginx && \
     # удаляем ненужные файлы
     rm -rf /usr/share/nginx/html/* && \
     # проверка конфигурации

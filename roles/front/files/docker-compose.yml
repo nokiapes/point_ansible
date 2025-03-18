@@ -16,19 +16,20 @@ services:
       options:
         max-size: "10m"
         max-file: "3"
-    # new
     read_only: true  # only reed files to container
     tmpfs:  # directory for write
       - /var/cache/nginx:rw,exec,nosuid,mode=0777,size=100M
-      # - /var/cache/nginx/client_temp:rw,exec,nosuid,size=50M
-      # - /var/cache/nginx/proxy_temp:rw,exec,nosuid,size=50M
-      # - /var/cache/nginx/fastcgi_temp:rw,exec,nosuid,size=50M
-      # - /var/cache/nginx/uwsgi_temp:rw,exec,nosuid,size=50M
-      # - /var/cache/nginx/scgi_temp:rw,exec,nosuid,size=50M
-      # - /var/log/nginx:rw,exec,nosuid,mode=0777,size=100M
       - /run/:rw,exec,nosuid,mode=0777,size=20M 
       - /tmp:rw,exec,nosuid,size=50M
-    # new
+    volumes:
+      - /var/log/nginx-docker:/var/log/nginx:rw
+      - /etc/localtime:/etc/localtime:ro  # sinhronization time
+
+# volumes:
+#   logs-nginx:
+#     name: logs-nginx
+#     driver: local
+
 networks:
   point-network:
     external: true

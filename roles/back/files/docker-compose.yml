@@ -30,6 +30,13 @@ services:
     read_only: true
     tmpfs:
       - /tmp:rw,exec,nosuid,size=50M
+    volumes:
+      - logs-backend:/app/logs:rw
+
+volumes:
+  logs-backend:
+    name: logs-backend
+    driver: local
 
 networks:
   point-network:
