@@ -9,16 +9,8 @@ FROM nginx:alpine AS start
 RUN apk update && \
     apk upgrade libxml2 && \
     rm -rf /var/cache/apk/* &&\
-
     mkdir -p /var/www/nginx/point && \
-    # touch /var/log/nginx/error.log && \
-    # touch /var/log/nginx/access.log && \
-
     chown -R nginx:nginx /var/www/nginx && \
-    # chown -R nginx:nginx /var/cache/nginx && \
-    # chown -R nginx:nginx /var/log/nginx && \
-    # touch /run/nginx.pid && \
-    # chown nginx:nginx /run/nginx.pid && \
     # удаляем ненужные файлы
     rm -rf /usr/share/nginx/html/* && \
     # проверка конфигурации
