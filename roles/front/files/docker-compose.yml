@@ -18,9 +18,14 @@ services:
         max-file: "3"
     read_only: true  # only reed files to container
     tmpfs:  # directory for write
-      - /var/cache/nginx:rw,exec,nosuid,mode=0777,size=100M
-      - /run/:rw,exec,nosuid,mode=0777,size=20M 
-      - /tmp:rw,exec,nosuid,size=50M
+      # - /var/cache/nginx:rw,exec,nosuid,mode=0777,size=100M
+      # - /run/:rw,exec,nosuid,mode=0777,size=20M 
+      # - /tmp:rw,exec,nosuid,size=50M
+      # - /var/log:rw,exec,nosuid,mode=0755,size=100M
+      - /var/cache/nginx:rw,exec,nosuid,uid=101,gid=101,mode=0744,size=100M
+      - /run/:rw,exec,nosuid,uid=101,gid=101,mode=0744,size=20M 
+      - /tmp:rw,exec,nosuid,uid=101,gid=101,size=50M
+      - /var/log:rw,exec,nosuid,uid=101,gid=101,mode=0777,size=100M
     volumes:
       - /var/log/nginx-docker:/var/log/nginx:rw
       - /etc/localtime:/etc/localtime:ro  # sinhronization time
