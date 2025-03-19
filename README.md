@@ -99,7 +99,7 @@ ignoreregex =
     compress        # Сжимать старые логи
     delaycompress   # Не сжимать последний ротированный лог
     notifempty      # Не ротировать пустые файлы
-    create 0644 nginx nginx # Создавать новые файлы с правами и владельцем
+    create 0644 101 101 # Создавать новые файлы с правами и владельцем
     sharedscripts   # Выполнять скрипты только один раз для всех логов
     postrotate      # Команда, выполняемая после ротации
         docker exec $(docker ps -qf "name=point-frontend-1") nginx -s reopen
