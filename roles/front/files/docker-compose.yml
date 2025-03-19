@@ -26,7 +26,7 @@ services:
       - /run/:rw,exec,nosuid,uid=101,gid=101,mode=0744,size=20M 
       - /tmp:rw,exec,nosuid,uid=101,gid=101,size=50M
     volumes:
-      - /var/log/nginx-docker:/var/log/nginx:rw
+      # - /var/log/nginx-docker:/var/log/nginx:rw
       - /etc/localtime:/etc/localtime:ro  # sinhronization time
 
 # volumes:
