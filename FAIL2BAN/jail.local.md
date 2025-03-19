@@ -20,11 +20,11 @@ ignoreip = 127.0.0.1/8 ::1
 #
 [sshd]
 enabled = true
-port = ssh
+port = 2020
 filter = sshd
 logpath = /var/log/auth.log
 maxretry = 3
-findtime = 3m
+findtime = 5m
 bantime = 20m
 
 #
