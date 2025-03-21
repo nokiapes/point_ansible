@@ -16,7 +16,6 @@ bantime = 20m
 ignoreip = 127.0.0.1/8 ::1
 
 # security SSH
-#
 [sshd]
 enabled = true
 port = 2020
@@ -28,7 +27,6 @@ bantime = 20m
 
 
 # security docker frontend
-#
 [nginx-http-auth-docker]
 enabled = true
 filter = nginx-http-auth
@@ -47,17 +45,34 @@ maxretry = 3
 findtime = 30m
 bantime = 24h
 
+[nginx-badbots-docker]
+enabled = true
+filter = nginx-badbots
+port = http,https
+logpath = /var/log/nginx-docker/access.log
+maxretry = 3
+findtime = 30m
+bantime = 24h
 
-# security nginx-proxy
+[nginx-custom-security-docker]
+enabled = true
+filter = nginx-custom-security
+port = http,https
+logpath = /var/log/nginx-docker/access.log
+maxretry = 3
+findtime = 10m
+bantime = 6h
+
+#
+# Защита прокси-сервера
 #
 [nginx-http-auth]
 enabled = true
 filter = nginx-http-auth
 port = http,https
 logpath = /var/log/nginx/error.log
-maxretry = 5
-findtime = 10m
-bantime = 24h
+maxretry = 3
+bantime = 1d
 
 [nginx-botsearch]
 enabled = true
@@ -65,8 +80,17 @@ filter = nginx-botsearch
 port = http,https
 logpath = /var/log/nginx/access.log
 maxretry = 2
-findtime = 24h
-bantime = 48h
+bantime = 2d
+findtime = 1h
+
+[nginx-badbots]
+enabled = true
+filter = nginx-badbots
+port = http,https
+logpath = /var/log/nginx/access.log
+maxretry = 2
+bantime = 2d
+findtime = 1h
 
 [nginx-req-limit]
 enabled = true
@@ -77,47 +101,47 @@ maxretry = 5
 findtime = 5m
 bantime = 6h
 
-[nginx-403]
-enabled = true
-filter = nginx-403
-port = http,https
-logpath = /var/log/nginx/access.log
-maxretry = 3
-findtime = 10m
-bantime = 1h
-
 [nginx-404]
 enabled = true
 filter = nginx-404
 port = http,https
 logpath = /var/log/nginx/access.log
-maxretry = 7
+maxretry = 10
 findtime = 5m
-bantime = 6h
+bantime = 12h
 
-[nginx-bad-request]
+[nginx-noscript]
 enabled = true
-filter = nginx-bad-request
+filter = nginx-noscript
 port = http,https
 logpath = /var/log/nginx/access.log
-maxretry = 3
-findtime = 5m
-bantime = 1h
+maxretry = 4
+findtime = 1h
+bantime = 1d
+
+[nginx-api-abuse]
+enabled = true
+filter = nginx-api-abuse
+port = http,https
+logpath = /var/log/nginx/access.log
+maxretry = 5
+findtime = 10m
+bantime = 6h
+
+[nginx-xss-sql]
+enabled = true
+filter = nginx-xss-sql
+port = http,https
+logpath = /var/log/nginx/access.log
+maxretry = 2
+findtime = 10m
+bantime = 1d
 
 [nginx-empty-agent]
 enabled = true
 filter = nginx-empty-agent
 port = http,https
 logpath = /var/log/nginx-docker/access.log /var/log/nginx/access.log
-maxretry = 2
+maxretry = 3
 findtime = 10m
-bantime = 48h
-
-[nginx-ssl-attacks]
-enabled = true
-filter = nginx-ssl-attacks
-port = http,https
-logpath = /var/log/nginx/access.log /var/log/nginx/error.log
-maxretry = 2
-findtime = 20m
-bantime = 48h
+bantime = 1d
