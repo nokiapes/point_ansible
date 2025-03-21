@@ -57,7 +57,7 @@ port = http,https
 logpath = /var/log/nginx/error.log
 maxretry = 5
 findtime = 10m
-bantime = 24h
+bantime = 1h
 
 [nginx-botsearch]
 enabled = true
@@ -75,7 +75,7 @@ port = http,https
 logpath = /var/log/nginx/error.log
 maxretry = 5
 findtime = 5m
-bantime = 6h
+bantime = 1h
 
 [nginx-403]
 enabled = true
