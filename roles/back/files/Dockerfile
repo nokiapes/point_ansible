@@ -32,7 +32,6 @@ RUN apk update && \
     musl>=1.2.5-r1 \
     musl-utils>=1.2.5-r1
 
-
 RUN adduser -D -h /app appuser \
     && chown -R appuser:appuser /app
 

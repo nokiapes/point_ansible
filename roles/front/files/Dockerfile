@@ -7,7 +7,11 @@ RUN npm run build
 
 FROM nginx:alpine AS start
 RUN apk update && \
-    apk upgrade libxml2 libxslt libexpat && \
+    apk upgrade &&\
+    apk add --no-cache \
+    # libxml2 \
+    libxslt>=1.1.42-r2 \
+    libexpat>=2.7.0-r0 && \
     rm -rf /var/cache/apk/* &&\
     mkdir -p /var/www/nginx/point && \
     # удаляем ненужные файлы
