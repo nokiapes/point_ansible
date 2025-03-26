@@ -7,10 +7,9 @@ RUN npm run build
 
 FROM nginx:alpine AS start
 RUN apk update && \
-    apk upgrade libxml2 && \
+    apk upgrade libxml2 libxslt libexpat && \
     rm -rf /var/cache/apk/* &&\
     mkdir -p /var/www/nginx/point && \
-    # chown -R nginx:nginx /var/www/nginx && \
     # удаляем ненужные файлы
     rm -rf /usr/share/nginx/html/* && \
     # проверка конфигурации
