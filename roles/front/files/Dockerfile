@@ -17,7 +17,7 @@ RUN apk update && \
     # удаляем ненужные файлы
     rm -rf /usr/share/nginx/html/* && \
     # проверка конфигурации
-    # chmod -R 755 /var/www/nginx/point
+    chmod -R 755 /var/www/nginx/point
 
 WORKDIR /var/www/nginx/point
 COPY --from=build /app/dist .
