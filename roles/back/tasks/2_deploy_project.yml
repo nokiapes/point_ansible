@@ -28,5 +28,7 @@
     BUILD_VERSION: "{{ build_version }}"
     API_KEY_NOVA_POSHTA: "{{ API_KEY_NOVA_POSHTA }}"
     JWT_KEY: "{{ JWT_KEY }}"
+    RDS_PASS_USERNAME: "{{ RDS_PASS_USERNAME }}"
+    RDS_PASS_PASSWORD: "{{ RDS_PASS_PASSWORD }}"
 
 

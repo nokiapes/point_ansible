@@ -17,6 +17,8 @@ services:
       - AWS_S3_Bucket_Region
       - API_KEY_NOVA_POSHTA
       - JWT_KEY
+      - RDS_PASS_USERNAME
+      - RDS_PASS_PASSWORD
     ports:
       - "127.0.0.1:5000:80"
     networks:
