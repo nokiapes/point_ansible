@@ -27,5 +27,6 @@
     AWS_S3_Bucket_Region: "{{ AWS_S3_Bucket_Region }}"
     BUILD_VERSION: "{{ build_version }}"
     API_KEY_NOVA_POSHTA: "{{ API_KEY_NOVA_POSHTA }}"
+    JWT_KEY: "{{ JWT_KEY }}"
 
 
