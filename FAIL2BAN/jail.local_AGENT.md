@@ -38,9 +38,9 @@ enabled = true
 filter = nginx-http-auth
 port = http,https
 logpath = /var/log/nginx-docker/error.log
-# maxretry = 5
-# findtime = 3m
-# bantime = 20m
+maxretry = 5
+findtime = 3m
+bantime = 20m
 
 [nginx-botsearch-docker]
 enabled = true
