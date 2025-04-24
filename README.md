@@ -4,4 +4,3 @@
 2) установлена java 17 - для подключения сервера как агента jenkins
 3) пользователь "jenkins" с доступом к правам "sudo"
 4) установлен Docker, Docker compose, Ansible
-

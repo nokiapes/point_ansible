@@ -26,5 +26,10 @@
     AWS_S3_Bucket_Name: "{{ AWS_S3_Bucket_Name }}"
     AWS_S3_Bucket_Region: "{{ AWS_S3_Bucket_Region }}"
     BUILD_VERSION: "{{ build_version }}"
-
-
+    API_KEY_NOVA_POSHTA: "{{ API_KEY_NOVA_POSHTA }}"
+    JWT_KEY: "{{ JWT_KEY }}"
+    RDS_PASS_USERNAME: "{{ RDS_PASS_USERNAME }}"
+    RDS_PASS_PASSWORD: "{{ RDS_PASS_PASSWORD }}"
+    REDIS_HOST: "{{ REDIS_HOST }}"
+    REDIS_PASSWORD: "{{ REDIS_PASSWORD }}"
+    REDIS_PORT: "{{ REDIS_PORT }}"
