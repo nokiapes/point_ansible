@@ -21,7 +21,7 @@ WORKDIR /app
 
 # Обновляем пакеты и устанавливаем зависимости с последними версиями
 RUN apk update && \
-    apk upgrade
+    apk upgrade --no-cache
     # && \
     # apk add --no-cache \
     # ca-certificates \
