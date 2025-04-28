@@ -21,16 +21,17 @@ WORKDIR /app
 
 # Обновляем пакеты и устанавливаем зависимости с последними версиями
 RUN apk update && \
-    apk upgrade && \
-    apk add --no-cache \
-    ca-certificates \
-    tzdata \
-    icu-libs \
-    krb5-libs \
-    libcrypto3>=3.3.3-r0 \
-    libssl3>=3.3.3-r0 \
-    musl>=1.2.5-r1 \
-    musl-utils>=1.2.5-r1
+    apk upgrade
+    # && \
+    # apk add --no-cache \
+    # ca-certificates \
+    # tzdata \
+    # icu-libs \
+    # krb5-libs \
+    # libcrypto3>=3.3.3-r0 \
+    # libssl3>=3.3.3-r0 \
+    # musl>=1.2.5-r1 \
+    # musl-utils>=1.2.5-r1
 
 RUN adduser -D -h /app appuser \
     && chown -R appuser:appuser /app
