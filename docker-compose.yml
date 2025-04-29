@@ -1,5 +1,6 @@
 services:
   backend:
+    container_name: point-backend
     build:
       context: .
       dockerfile: Dockerfile
