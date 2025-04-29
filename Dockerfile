@@ -8,7 +8,8 @@ COPY . ./
 RUN dotnet publish shnurok.sln -c release -o /app/build /p:AssemblyName=point
 
 ###
-FROM mcr.microsoft.com/dotnet/aspnet:6.0-alpine AS start
+# FROM mcr.microsoft.com/dotnet/aspnet:6.0-alpine AS start
+FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS start
 WORKDIR /app
 RUN apk update && \
     apk upgrade --no-cache && \
