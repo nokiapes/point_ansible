@@ -1,8 +1,0 @@
----
-- name: START_FRONTEND
-  hosts: point
-  become: true
-  become_method: sudo
-  roles:
-    - front
-

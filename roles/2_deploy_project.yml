@@ -1,0 +1,35 @@
+---
+- name: Create Docker network
+  community.docker.docker_network:
+    name: point-network
+    driver: bridge
+    state: present
+
+- name: START COMPOSE FILE
+  community.docker.docker_compose_v2:
+    build: always
+    check_files_existing: true
+    # project_name: point
+    project_src: "{{ backend_path }}"
+    state: present
+    pull: missing
+    # remove_orphans: yes
+    remove_images: local
+  environment:    
+    AWS_ACCESS_KEY_ID: "{{ AWS_ACCESS_KEY_ID }}"
+    AWS_SECRET_ACCESS_KEY: "{{ AWS_SECRET_ACCESS_KEY }}"
+    AWS_RDS_Database_Endpoint: "{{ AWS_RDS_Database_Endpoint }}"
+    AWS_RDS_Database_Name: "{{ AWS_RDS_Database_Name }}"
+    AWS_RDS_Database_Port: "{{ AWS_RDS_Database_Port }}"
+    AWS_RDS_Database_Username: "{{ AWS_RDS_Database_Username }}"
+    AWS_RDS_Database_Region: "{{ AWS_RDS_Database_Region }}"
+    AWS_S3_Bucket_Name: "{{ AWS_S3_Bucket_Name }}"
+    AWS_S3_Bucket_Region: "{{ AWS_S3_Bucket_Region }}"
+    BUILD_VERSION: "{{ build_version }}"
+    API_KEY_NOVA_POSHTA: "{{ API_KEY_NOVA_POSHTA }}"
+    JWT_KEY: "{{ JWT_KEY }}"
+    RDS_PASS_USERNAME: "{{ RDS_PASS_USERNAME }}"
+    RDS_PASS_PASSWORD: "{{ RDS_PASS_PASSWORD }}"
+    REDIS_HOST: "{{ REDIS_HOST }}"
+    REDIS_PASSWORD: "{{ REDIS_PASSWORD }}"
+    REDIS_PORT: "{{ REDIS_PORT }}"
