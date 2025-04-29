@@ -22,6 +22,12 @@ RUN dotnet publish shnurok.sln -c release -o /app/build /p:AssemblyName=point
 
 FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS start
 WORKDIR /app
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+        ca-certificates \
+        tzdata \
+    && rm -rf /var/lib/apt/lists/*
+
 
 RUN adduser -D -h /app appuser \
     && chown -R appuser:appuser /app
