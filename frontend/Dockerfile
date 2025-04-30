@@ -20,8 +20,8 @@ RUN apk update && \
 WORKDIR /var/www/nginx/point
 COPY --from=build /app/dist .
 COPY ./frontend/nginx.conf /etc/nginx/conf.d/default.conf 
-# RUN chown -R nginx:nginx /var/www/nginx/point
-RUN chgrp -R nginx /var/www/nginx/point \
+# RUN chgrp -R nginx /var/www/nginx/point
+RUN chown -R nginx:nginx /var/www/nginx/point && \
     chgrp nginx /etc/nginx/conf.d/default.conf 
 
 USER nginx
