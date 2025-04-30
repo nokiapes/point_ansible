@@ -48,8 +48,8 @@ services:
       dockerfile: ./frontend/Dockerfile
     image: point-frontend:${BUILD_VERSION}
     restart: unless-stopped
-    depends_on:
-      - backend
+    # depends_on:
+    #   - backend
     ports:
       - "127.0.0.1:81:80" 
     networks:
