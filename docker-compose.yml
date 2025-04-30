@@ -70,11 +70,6 @@ services:
       - /var/log/nginx-docker:/var/log/nginx:rw
       - /etc/localtime:/etc/localtime:ro  # sinhronization time
 
-# volumes:
-#   logs-backend:
-#     name: logs-backend
-#     driver: local
-
 networks:
   point-network:
       driver: bridge
