@@ -73,8 +73,8 @@ services:
 
 networks:
   point-network:
-      driver: bridge
-      name: point-network
-    # external: true
-    # name: point-network
+      # driver: bridge
+      # name: point-network
+    external: true
+    name: point-network
     
