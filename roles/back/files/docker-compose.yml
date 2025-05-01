@@ -11,14 +11,15 @@ services:
       - AWS_RDS_Database_Endpoint
       - AWS_RDS_Database_Name
       - AWS_RDS_Database_Port
-      - AWS_RDS_Database_Username
       - AWS_RDS_Database_Region
+      - AWS_RDS_Database_Username
+      - AWS_RDS_Database_Password
+      - AWS_RDS_Database_Innards_Username
+      - AWS_RDS_Database_Innards_Password
       - AWS_S3_Bucket_Name
       - AWS_S3_Bucket_Region
       - API_KEY_NOVA_POSHTA
       - JWT_KEY
-      - RDS_PASS_USERNAME
-      - RDS_PASSWORD
       - REDIS_HOST
       - REDIS_PASSWORD
       - REDIS_PORT
