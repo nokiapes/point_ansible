@@ -19,7 +19,7 @@ services:
       - API_KEY_NOVA_POSHTA
       - JWT_KEY
       - RDS_PASS_USERNAME
-      - RDS_PASS_PASSWORD
+      - RDS_PASSWORD
       - REDIS_HOST
       - REDIS_PASSWORD
       - REDIS_PORT
