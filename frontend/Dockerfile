@@ -9,7 +9,7 @@ FROM nginx:alpine AS start
 RUN apk update && \
     apk upgrade --no-cache &&\
     apk add --no-cache \
-    libxml2 \
+    libxml2>=2.13.4-r6 \
     libxslt>=1.1.42-r2 \
     libexpat>=2.7.0-r0 && \
     rm -rf /var/cache/apk/* &&\
