@@ -26,6 +26,7 @@ services:
       - REDIS_PORT
       - STRIPE_WEBHOOK_SECRET
       - STRIPE_TEST_SECRET_KEY
+      - CAPHA_TOKEN
     ports:
       - "127.0.0.1:5000:80"
     networks:
