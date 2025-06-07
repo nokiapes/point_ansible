@@ -14,9 +14,7 @@ RUN apk update && \
     libexpat>=2.7.0-r0 && \
     rm -rf /var/cache/apk/* &&\
     mkdir -p /var/www/nginx/point && \
-    # удаляем ненужные файлы
     rm -rf /usr/share/nginx/html/* && \
-    # проверка конфигурации
     chmod -R 755 /var/www/nginx/point
 
 WORKDIR /var/www/nginx/point
